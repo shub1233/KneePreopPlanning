@@ -24,7 +24,7 @@ export default class Line {
         this.makeLine();
 
         if (type === "mechanicalAxis") {
-            new Plane(this.point1.pointMesh.position, this.point2.pointMesh.position);
+            this.plane = new Plane(this.point1.pointMesh.position, this.point2.pointMesh.position);
         }
 
         this.experience.time.on("tick", () => {
@@ -65,8 +65,14 @@ export default class Line {
 
     destroy() {
         this.scene.remove(this.lineMesh);
-        // this.lineMesh.geometry.dispose();
-        // this.lineMesh.material.dispose();
         this.lineMesh = null;
+
+        if (this.plane) {
+            this.plane.planeMesh.geometry.dispose();
+            this.plane.planeMesh.material.dispose();
+            this.scene.remove(this.plane.planeMesh);
+            this.plane.planeMesh = null;
+            this.plane = null;
+        }
     }
 }

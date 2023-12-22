@@ -18,3 +18,5 @@ for example when you select Femur Center("all other selections are disabled") to
 2. Then after ploting all 10 points you can see the update btn is visible
 
 3. Clicking update btn will draw lines and a plane
+
+PS: When you update any point after creation and after clicking update, you again need to click update to see the changes.
